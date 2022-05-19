@@ -58,12 +58,12 @@ class crudProducto{
       return $mensaje;
     }
 
-    public function buscarCategoria($categoria){//Read del CRUD:SELECT
+    public function buscarProducto($producto){//Read del CRUD:SELECT
       //Establecer la conexión a la base datos
       //var_dump($categoria);
       $baseDatos = Conexion::conectar();
       //Definir la sentencia sql
-      $sql = $baseDatos->query("SELECT * FROM categoria WHERE idCategoria=".$categoria->getidCategoria());
+      $sql = $baseDatos->query("SELECT * FROM producto WHERE idProducto=".$producto->getidProducto());
       //Ejecutar la consulta
       $sql->execute();
       //Cerrar la conexión
