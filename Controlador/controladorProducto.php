@@ -45,6 +45,9 @@ class controladorProducto{
       $datosProducto = $crudProducto->buscarProducto($Producto); //LLamar el método del crud
       //var_dump($datosProducto);
       $Producto->setnombre($datosProducto['nombre']);
+      $Producto->setidCategoria($datosProducto['idCategoria']);
+      $Producto->setprecio($datosProducto['precio']);
+      $Producto->setestado($datosProducto['estado']);
       return $Producto;
    }
 

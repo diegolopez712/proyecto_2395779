@@ -16,22 +16,31 @@ $producto = $controladorProducto->buscarProducto($_REQUEST['idProducto']);
     <h1 align="center">Editar Producto</h1>
     <form action="../Controlador/controladorProducto.php" method="POST">
         <label>Id Producto</label>
-        <input type="text" name="idProducto" id="idProducto" readonly />
+        <input type="text" name="idProducto" id="idProducto" readonly  value="<?php echo $producto->getidProducto() ?>" />
         <br>
         <label>Categoría</label>
         <select name="idCategoria" id="idCategoria">
             <option value="">Seleccione</option>
             <?php
                 foreach($listaCategoria as $categoria){
-                    echo "<option value=$categoria[idCategoria] >
-                    $categoria[nombre]
-                    </option>";
-                }
+?>
+<option value="<?php echo $categoria['idCategoria'] ?>"
+<?php if($categoria['idCategoria'] == $producto->getIdCategoria())
+{?>
+selected
+<?php
+}
+?>
+>
+<?php echo $categoria['nombre']; ?>
+</option>
+<?php
+}
             ?>
         </select>
         <br>
         <label>Nombre:</label>
-        <input type="text" name="nombre" id="nombre" />
+        <input type="text" name="nombre" id="nombre" value="<?php echo $producto->getnombre() ?>" />
         <br>
         <label>Precio:</label>
         <input type="text" name="precio" id="precio" />
