@@ -2,7 +2,7 @@
 require_once('../Controlador/controladorCategoria.php');
 require_once('../Controlador/controladorProducto.php');
 $producto = $controladorProducto->buscarProducto($_REQUEST['idProducto']);
-
+//var_dump($listaCategoria);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,21 +21,17 @@ $producto = $controladorProducto->buscarProducto($_REQUEST['idProducto']);
         <label>Categoría</label>
         <select name="idCategoria" id="idCategoria">
             <option value="">Seleccione</option>
-            <?php
-                foreach($listaCategoria as $categoria){
-?>
-<option value="<?php echo $categoria['idCategoria'] ?>"
-<?php if($categoria['idCategoria'] == $producto->getIdCategoria())
-{?>
-selected
-<?php
-}
-?>
->
-<?php echo $categoria['nombre']; ?>
-</option>
-<?php
-}
+            <?php 
+            foreach($listaCategoria as $categoria ){
+                echo "<option value='$categoria[idCategoria]'";
+
+                if($categoria['idCategoria'] == $producto->getidCategoria()){
+                    echo "selected";
+                }
+                echo ">";
+                echo $categoria['nombre'];
+                echo "</option>";
+            }
             ?>
         </select>
         <br>
@@ -43,10 +39,10 @@ selected
         <input type="text" name="nombre" id="nombre" value="<?php echo $producto->getnombre() ?>" />
         <br>
         <label>Precio:</label>
-        <input type="text" name="precio" id="precio" />
+        <input type="text" name="precio" id="precio" value ="<?php echo $producto->getprecio() ?>" />
         <br>
         <label>Estado</label>
-        <input type="text" name="estado" id="estado" />
+        <input type="text" name="estado" id="estado" value= "<?php echo $producto->getestado() ?>" />
         <br>
         <button type="submit" name="Actualizar">Actualizar</button>
     </form>

@@ -72,38 +72,46 @@ class crudProducto{
       return($sql->fetch());//Retornar el resultado de la consulta
     }
 
-    public function actualizarCategoria($categoria){ //Recibe un objeto de la clase categoria
+    public function actualizarProducto($producto){ //Recibe un objeto de la clase categoria
+      $mensaje = "";
       //Establecer la conexión a la base datos
       $baseDatos = Conexion::conectar();  
       //Preparar la sentencia sql
       //e_ indica que es un dato de entrada
       $sql = $baseDatos->prepare('UPDATE  
-      categoria SET nombre =:e_nombre WHERE idCategoria=:e_idCategoria');
+      producto SET idCategoria=:e_idCategoria, nombre=:e_nombre,
+      precio=:e_precio, estado=:e_estado  
+      WHERE idProducto=:e_idProducto
+      ');
       //Las siguientes líneas capturan los valores de los atributos del objeto
-      $sql->bindValue('e_idCategoria', $categoria->getidCategoria());
-      $sql->bindValue('e_nombre', $categoria->getnombre());
+      $sql->bindValue('e_idCategoria', $producto->getidCategoria());
+      $sql->bindValue('e_nombre', $producto->getnombre());
+      $sql->bindValue('e_precio', $producto->getprecio());
+      $sql->bindValue('e_estado', $producto->getestado());
+      $sql->bindValue('e_idProducto', $producto->getidProducto());
       try{ //Capturar excepciones de la base de datos
         //Ejecutar la consulta
         $sql->execute();
-        echo "Actualización exitosa";
+        $mensaje = "Actualización exitosa";
       }
       catch(Exception $excepcion){ //Exception: Excepción o un error
         echo $excepcion->getMessage();
-        echo "Problemas en la actualización";
+        $mensaje = "Problemas en la actualización";
       }
       //Cerrar la conexión
       Conexion::desconectar($baseDatos);
+      return $mensaje;
     }
 
-    public function eliminarCategoria($categoria){ //Recibe un objeto de la clase categoria
+    public function eliminarProducto($producto){ //Recibe un objeto de la clase categoria
       //Establecer la conexión a la base datos
       $baseDatos = Conexion::conectar();  
       //Preparar la sentencia sql
       //e_ indica que es un dato de entrada
       $sql = $baseDatos->prepare('DELETE FROM  
-      categoria WHERE idCategoria=:e_idCategoria');
+      producto WHERE idProducto=:e_idProducto');
       //Las siguientes líneas capturan los valores de los atributos del objeto
-      $sql->bindValue('e_idCategoria', $categoria->getidCategoria());
+      $sql->bindValue('e_idProducto', $producto->getidProducto());
       try{ //Capturar excepciones de la base de datos
         //Ejecutar la consulta
         $sql->execute();
