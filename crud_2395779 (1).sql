@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2022 a las 01:12:41
+-- Tiempo de generación: 24-05-2022 a las 02:03:12
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -37,32 +37,36 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`idCategoria`, `nombre`) VALUES
+(17, 'CELULARES 233232'),
+(14, 'COMPUTADOR12'),
 (1, 'FRUTAS'),
-(9, 'FRUTASs'),
-(6, 'granos'),
 (5, 'LICORES'),
-(4, 'PRUEBA'),
-(3, 'TAPABOCAS'),
-(2, 'VERDURAS');
+(16, 'VENTANAS');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria2`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `categoria2` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(5) NOT NULL
+CREATE TABLE `producto` (
+  `idProducto` int(5) NOT NULL,
+  `idCategoria` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `precio` double(10,2) NOT NULL,
+  `estado` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `categoria2`
+-- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `categoria2` (`id`, `nombre`) VALUES
-(10, 'FRUTA'),
-(21, 'VERDU');
+INSERT INTO `producto` (`idProducto`, `idCategoria`, `nombre`, `precio`, `estado`) VALUES
+(1, 1, 'LIMON', 100.00, b'1'),
+(2, 1, 'LIMON', 100.00, b'1'),
+(3, 1, 'LIMON', 100.00, b'1'),
+(5, 17, 'SAMSUNG', 78888.00, b'1'),
+(7, 5, 'VINO', 450000.00, b'1');
 
 --
 -- Índices para tablas volcadas
@@ -76,11 +80,11 @@ ALTER TABLE `categoria`
   ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
--- Indices de la tabla `categoria2`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `categoria2`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nombre` (`nombre`);
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`),
+  ADD KEY `idCategoria` (`idCategoria`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -90,7 +94,23 @@ ALTER TABLE `categoria2`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
