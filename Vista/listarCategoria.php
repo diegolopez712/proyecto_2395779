@@ -1,16 +1,9 @@
 <?php
 require_once('../Controlador/controladorCategoria.php');
+require_once('layoutSuperior.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Categorias</title>
-</head>
-<body>
-    <a href="../Controlador/controladorCategoria.php?vista=registrarCategoria.html" >Registrar</a>
+
+<a href="../Controlador/controladorCategoria.php?vista=registrarCategoria.php" >Registrar</a>
     <h1 align="center">Categorías</h1>
     <table border="1" align="center">
         <thead>
@@ -49,5 +42,6 @@ require_once('../Controlador/controladorCategoria.php');
             }
         }
     </script>
-</body>
-</html>
+<?php 
+require_once('layoutInferior.php');
+?>

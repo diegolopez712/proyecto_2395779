@@ -117,7 +117,7 @@ class crudProducto{
         $sql->execute();
         echo "Eliminación exitosa";
       }
-      catch(Exception $excepcion){ //Exception: Excepción o un error
+      catch(Exception $crud_2395779){ //Exception: Excepción o un error
         //echo $excepcion->getMessage();
         echo "Problemas en la eliminación";
       }
