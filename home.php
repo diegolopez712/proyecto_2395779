@@ -1,4 +1,9 @@
 <?php
+session_start();
+//Si la variable de sesión no está definida mandar al login
+if(!isset($_SESSION['idRol'])){
+    header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +17,9 @@
 <body>
     <div id="contenedor">
         <div id="superior">
-            Prueba
+            Bienvenido <?php echo $_SESSION['email']; ?>
+            <br>
+            <a href="Controlador/ControladorUsuario.php?CerrarSesion">Salir</a>
         </div>
         <div id="medio">
             <div id="izquierdo">

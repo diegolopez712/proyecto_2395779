@@ -1,11 +1,5 @@
 <?php
 class Usuario{
-    private $idUsuario;
-    private $email;
-    private $contrasena;
-    private $idRol;
-    private $estado;
-
     public function __construct(){
 
     }
@@ -30,6 +24,10 @@ class Usuario{
         $this->estado = $e_estado;
     }
 
+    public function setlogueado($e_logueado){
+        $this->logueado = $e_logueado;
+    }
+
     public function getidUsuario(){
         return $this->idUsuario;
     }
@@ -48,6 +46,10 @@ class Usuario{
 
     public function getestado(){
         return $this->estado;
+    }
+
+    public function getlogueado(){
+        return $this->logueado;
     }
 }
 
