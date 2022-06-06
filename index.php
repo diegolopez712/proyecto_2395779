@@ -10,14 +10,29 @@
 </head>
 <body>
     <h1 align='center'>Acceso</h1>
-    <form action="Controlador/controladorUsuario.php" method="post">
+    <form id="frmAcceso" action="Controlador/controladorUsuario.php" method="post">
         <label>Usuario</label>
         <input type="text" id="email" name="email" />
         <br>
         <label>Contraseña</label>
         <input type="password" id="contrasena" name="contrasena" />
-        <br>
-        <button type="submit" name="Acceder" >Acceder</button>
+        <p id="mensaje"></p>
+        <input type="hidden" name="Acceder" />
+        <button type="button" onclick="validarAcceso()">Acceder</button>
     </form>
+    <script>
+        function validarAcceso(){
+            let email = "";
+            let contrasena = "";
+            email = document.getElementById('email').value;
+            contrasena = document.getElementById('contrasena').value;
+            if(email == "" || contrasena == ""){
+                document.getElementById('mensaje').innerHTML = 'El usuario y/o contraseña no pueden estar vacias';
+            }
+            else{
+                document.getElementById('frmAcceso').submit();
+            }
+        }
+    </script>
 </body>
 </html>

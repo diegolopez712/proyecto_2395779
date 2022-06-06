@@ -16,16 +16,18 @@ body{
 #medio{
     background-color: chartreuse;
     height: 500px;
+    width:100%;
 }
 
 #izquierdo{
     background-color: darkkhaki;
     height: 500px;
-    width:10%;
+    width:7%;
     float: left;
 }
 #derecho{
-    background-color:yellow;
+    background-color:rgb(232, 232, 189);
     height: 500px;
-    width:auto;
+    width:90%;
+    float:left;
 }

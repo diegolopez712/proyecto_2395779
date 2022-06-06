@@ -23,9 +23,21 @@ if(!isset($_SESSION['idRol'])){
         </div>
         <div id="medio">
             <div id="izquierdo">
-                <a href="vista/listarCategoria.php">Categoría</a>
-                <br>
-                <a href="">Producto</a>
+                <?php
+                if($_SESSION['idRol'] == 1)
+                {
+                ?>
+                    <a href="vista/listarCategoria.php">Categoría</a>
+                    <br>
+                    <a href="vista/listarProducto.php">Producto</a>
+                <?php
+                }
+                else{
+                ?>
+                    <a href="vista/listarProducto.php">Producto</a>
+                <?php
+                }
+                ?>
             </div>
             <div id="derecho">
                 Crud básico
@@ -35,3 +47,4 @@ if(!isset($_SESSION['idRol'])){
     </div>
 </body>
 </html>
+

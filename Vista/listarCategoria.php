@@ -1,6 +1,6 @@
 <?php
 require_once('../Controlador/controladorCategoria.php');
-require_once('layoutSuperior.php');
+b
 ?>
 
 <a href="../Controlador/controladorCategoria.php?vista=registrarCategoria.php" >Registrar</a>
